@@ -42,7 +42,14 @@ def signin():
     data =json.loads(request.data)
     email=data["email"]
     password=data["password"]
-    return 200
+    getuser=mydb.users.find_one({"email":email})
+    print(getuser)
+    if(getuser["password"]==password):
+        print("Correct Credentials")
+        return "200"
+    else:
+        print("Incorrect")
+        return "500"
 
 
 @app.route("/register",methods=["POST"])

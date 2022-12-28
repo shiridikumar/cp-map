@@ -28,6 +28,7 @@ function Copyright(props) {
   );
 }
 
+
 const theme = createTheme();
 function Signin() {
   const handleSubmit = (event) => {
@@ -48,7 +49,15 @@ function Signin() {
         }
   
         }).then(response=>{
-            console.log(response.data);
+            if(response.data=="200"){
+                navigate("/dashboard")
+            }
+            else if(response.data=="500"){
+                alert("Invalid credentials")
+            }
+            else{
+                alert("Some internal server error")
+            }
         })
     
   };

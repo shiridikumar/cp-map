@@ -16,6 +16,7 @@ import { InputLabel, MenuItem } from '@mui/material';
 import Select, { SelectChangeEvent } from '@mui/material/Select';
 import FormControl from '@mui/material/FormControl';
 import axios from 'axios';
+import { useNavigate } from 'react-router-dom';
 
 function Copyright(props) {
     return (
@@ -59,6 +60,10 @@ export default function SignUp() {
                 }
                 else if(response.data=="200"){
                     alert("Succesfully registered!")
+                    navigate("/")
+                }
+                else{
+                    alert("Some internal server error")
                 }
             })
     };
@@ -69,6 +74,7 @@ export default function SignUp() {
       setgender(event.target.value);
     };
     const [user,setuser]=React.useState("")
+    const navigate=useNavigate();
     const [email,setemail]=React.useState("")
     const [dob,setdob]=React.useState("")
     const [phn,setphn]=React.useState("")
